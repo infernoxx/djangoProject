@@ -6,52 +6,186 @@
     <title>Title</title>
     <link rel="stylesheet" href="{% static 'plugins/bootstrap-3.4.1/css/bootstrap.min.css' %}">
     <style>
-        .navbar{
+        .navbar {
             border-radius: 0;
-            background-color: rgb(245,245,239);
+            background-color: rgb(245, 245, 239);
+        }
+
+        .panel {
+            border: none;
+        }
+
+        .panel-default > .panel-heading {
+            background-color: rgb(245, 245, 239);
+        }
+
+        .panel-footer {
+            background-color: white;
+            text-align: right;
+        }
+
+        .panel-body {
+            text-align: center;
+        }
+
+        .recolor {
+            color: rgb(174, 174, 174);
+        }
+
+        .thumbnail {
+            height: 310px;
+        }
+
+        .book_name {
+            font-size: 15px;
+            color: #2aabd2;
+        }
+
+        .pagination {
+            right: auto;
+        }
+
+        .carousel-control {
+            width: 5%;
         }
     </style>
 </head>
 <body>
 <nav class="navbar navbar-default">
-  <div class="container">
-    <div class="navbar-header">
-      <a class="navbar-brand" href="#">图书推荐系统</a>
-    </div>
-    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-      <ul class="nav navbar-nav">
-        <li><a href="#">待添加</a></li>
-        <li><a href="#">待添加</a></li>
-        <li><a href="#">待添加</a></li>
-      </ul>
-      <form class="navbar-form navbar-left">
-        <div class="form-group">
-          <input type="text" class="form-control" placeholder="书名、作者、出版社" style="width: 250px">
+    <div class="container">
+        <div class="navbar-header">
+            <a class="navbar-brand" href="#">图书推荐系统</a>
         </div>
-        <button type="submit" class="btn btn-default">
-            <span class="glyphicon glyphicon-search" aria-hidden="true"></span>
-        </button>
-      </form>
-      <ul class="nav navbar-nav navbar-right">
-        <li><a href="#">登陆</a></li>
-        <li class="dropdown">
-          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
-              用户12138 <span class="caret"></span>
-          </a>
-          <ul class="dropdown-menu">
-            <li><a href="#">个人主页</a></li>
-            <li><a href="#">账号管理</a></li>
-            <li role="separator" class="divider"></li>
-            <li><a href="#">退出登陆</a></li>
-            <li><a href="#">注销账号</a></li>
-{#              245 245 239#}
-          </ul>
-        </li>
-      </ul>
-    </div><!-- /.navbar-collapse -->
-  </div><!-- /.container-fluid -->
+        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+            <ul class="nav navbar-nav">
+                <li><a href="#">待添加</a></li>
+                <li><a href="#">待添加</a></li>
+                <li><a href="#">待添加</a></li>
+            </ul>
+            <form class="navbar-form navbar-left">
+                <div class="form-group">
+                    <input type="text" class="form-control" placeholder="书名、作者、出版社" style="width: 250px">
+                </div>
+                <button type="submit" class="btn btn-default">
+                    <span class="glyphicon glyphicon-search" aria-hidden="true"></span>
+                </button>
+            </form>
+            <ul class="nav navbar-nav navbar-right">
+                <li><a href="#">登陆</a></li>
+                <li class="dropdown">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true"
+                       aria-expanded="false">
+                        用户12138 <span class="caret"></span>
+                    </a>
+                    <ul class="dropdown-menu">
+                        <li><a href="#">个人主页</a></li>
+                        <li><a href="#">账号管理</a></li>
+                        <li role="separator" class="divider"></li>
+                        <li><a href="#">退出登陆</a></li>
+                        <li><a href="#">注销账号</a></li>
+                    </ul>
+                </li>
+            </ul>
+        </div>
+    </div>
 </nav>
-<div class="container">新书速递</div>
+<div class="container">
+    <div class="panel panel-default">
+        <div class="panel-heading">
+            <h3 class="panel-title">名人名言</h3>
+        </div>
+        <div class="panel-body">
+            书籍是人类进步的阶梯
+        </div>
+        <div class="panel-footer">
+            --高尔基
+        </div>
+    </div>
+</div>
+
+<div class="container">
+    <div class="bs-example bs-example-tabs" data-example-id="togglable-tabs">
+        <h4>热榜速递</h4>
+        <ul id="myTabs" class="nav nav-tabs" role="tablist">
+            <li role="presentation" class="active"><a class="recolor" href="#all" id="home-tab" role="tab"
+                                                      data-toggle="tab"
+                                                      aria-controls="home" aria-expanded="true">全部</a></li>
+            <li role="presentation" class=""><a class="recolor" href="#literature" role="tab" id="profile-tab"
+                                                data-toggle="tab"
+                                                aria-controls="profile" aria-expanded="false">文学</a></li>
+            <li role="presentation" class=""><a class="recolor" href="#test2" role="tab" id="profile-tab"
+                                                data-toggle="tab"
+                                                aria-controls="profile" aria-expanded="false">小说</a></li>
+            <li role="presentation" class=""><a class="recolor" href="#test3" role="tab" id="profile-tab"
+                                                data-toggle="tab"
+                                                aria-controls="profile" aria-expanded="false">科幻</a></li>
+            <li role="presentation" class=""><a class="recolor" href="#test3" role="tab" id="profile-tab"
+                                                data-toggle="tab"
+                                                aria-controls="profile" aria-expanded="false">青春</a></li>
+            <li role="presentation" class=""><a class="recolor" href="#test3" role="tab" id="profile-tab"
+                                                data-toggle="tab"
+                                                aria-controls="profile" aria-expanded="false">悬疑</a></li>
+            <li role="presentation" class=""><a class="recolor" href="#test3" role="tab" id="profile-tab"
+                                                data-toggle="tab"
+                                                aria-controls="profile" aria-expanded="false">哲学</a></li>
+            <li role="presentation" class=""><a class="recolor" href="#test3" role="tab" id="profile-tab"
+                                                data-toggle="tab"
+                                                aria-controls="profile" aria-expanded="false">历史</a></li>
+            <li role="presentation" class=""><a class="recolor" href="#test3" role="tab" id="profile-tab"
+                                                data-toggle="tab"
+                                                aria-controls="profile" aria-expanded="false">科学</a></li>
+            <li role="presentation" class=""><a class="recolor" href="#test3" role="tab" id="profile-tab"
+                                                data-toggle="tab"
+                                                aria-controls="profile" aria-expanded="false">编程</a></li>
+        </ul>
+        <div id="myTabContent" class="tab-content">
+            <div role="tabpanel" class="tab-pane fade in active" id="all" aria-labelledby="profile-tab">
+                <div class="bs-example" data-example-id="simple-carousel">
+                    <div class="row">
+                        {% for item in data_list_all1 %}
+                            <div class="col-sm-3 col-md-2">
+                                <div class="thumbnail">
+                                    <img src="{{ item.book_img }}" style="height: 225px"
+                                         alt="{{ item.book_name }}">
+                                    <div class="caption">
+                                        <p class="book_name">{{ item.book_name }}</p>
+                                        <p style="font-size: 13px">{{ item.author }}</p>
+                                    </div>
+                                </div>
+                            </div>
+                        {% endfor %}
+                    </div>
+                </div>
+            </div>
+            <div role="tabpanel" class="tab-pane fade" id="literature" aria-labelledby="profile-tab">
+                <div class="bs-example" data-example-id="simple-carousel">
+                    <div class="row">
+                        {% for item in data_list_literature1 %}
+                            <div class="col-sm-3 col-md-2">
+                                <div class="thumbnail">
+                                    <img src="{{ item.book_img }}" style="height: 225px"
+                                         alt="{{ item.book_name }}">
+                                    <div class="caption">
+                                        <p class="book_name">{{ item.book_name }}</p>
+                                        <p style="font-size: 13px">{{ item.author }}</p>
+                                    </div>
+                                </div>
+                            </div>
+                        {% endfor %}
+                    </div>
+                </div>
+            </div>
+            <div role="tabpanel" class="tab-pane fade" id="test2" aria-labelledby="dropdown1-tab">
+                <p>Etsy mixtape wayfarers, ethical wes anderson tofu before they sold out mcsweeney's organic lomo retro
+                    fanny pack lo-fi farm-to-table readymade. Messenger bag gentrify pitchfork tattooed craft beer,
+                    iphone skateboard locavore carles etsy salvia banksy hoodie helvetica. DIY synth PBR banksy irony.
+                    Leggings gentrify squid 8-bit cred pitchfork. Williamsburg banh mi whatever gluten-free, carles
+                    pitchfork biodiesel fixie etsy retro mlkshk vice blog. Scenester cred you probably haven't heard of
+                    them, vinyl craft beer blog stumptown. Pitchfork sustainable tofu synth chambray yr.</p>
+            </div>
+        </div>
+    </div>
+</div>
 
 <script src="{% static 'plugins/jquery-3.6.1.min.js' %}"></script>
 <script src="{% static 'plugins/bootstrap-3.4.1/js/bootstrap.min.js' %}"></script>
