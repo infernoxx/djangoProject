@@ -3,11 +3,12 @@ from lxml import etree
 import pymysql
 
 header = {
-    "User-Agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/107.0.0.0 Safari/537.36"
+    "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/107.0.0.0 Safari/537.36 Edg/107.0.1418.56"
 }
 
 res = requests.get("https://book.douban.com/tag/%E6%96%87%E5%AD%A6", headers=header)
 html = etree.HTML(res.content, parser=etree.HTMLParser(encoding='utf8'))
+# print(html)
 
 book_name_ = html.xpath('//div[@class="info"]/h2/a/text()')
 book_name = []
@@ -53,10 +54,10 @@ book_summary = []
 for i in book_summary_:
     book_summary.append(i.replace('\n',''))
 print(book_summary)
-
-conn = pymysql.connect(host='127.0.0.1',port=3306,user='root',password='1911231157',db='test01',charset='utf8')
+print(book_summary[0])
+conn = pymysql.connect(host='127.0.0.1',port=3306,user='root',password='1911231157',db='test',charset='utf8mb4')
 cursor = conn.cursor()
-for i in range(len(book_name)):
+for i in range(len(book_name)-1):
     book_name1 = book_name[i]
     author1 = author[i]
     rating_nums1 = rating_nums[i]
@@ -67,9 +68,10 @@ for i in range(len(book_name)):
     book_img1 = book_img[i]
     book_summary1 = book_summary[i]
     book_target = "文学"
-    sql = "insert into app01_book_info(book_name,author,rating_nums,rating_people,press,publication_time,price,book_img,book_summary,book_target) " \
+    sql = "insert into app01_book_info_literature(book_name,author,rating_nums,rating_people,press,publication_time,price,book_img,book_summary,book_target) " \
           "values (%s,%s,%s,%s,%s,%s,%s,%s,%s,%s)"
     cursor.execute(sql,[book_name1,author1,rating_nums1,rating_people1,press1,publication_time1,price1,book_img1,book_summary1,book_target])
     conn.commit()
 conn.close()
 cursor.close()
+# print(1)
