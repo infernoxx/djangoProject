@@ -1,20 +1,24 @@
 from django.shortcuts import render, HttpResponse, redirect
 
-from app01.models import test02
+from app01 import models
 # Create your views here.
 def index(request):
-    data_list = test02.objects.all()
-    if request.method == "GET":
-        nid = request.GET.get('nid')
-        test02.objects.filter(id=nid).delete()
-        return render(request,"user.html",{"datalist":data_list})
+    data_list_all = models.book_info.objects.order_by("-rating_nums")
+    data_list_all = data_list_all.values("book_name","author","book_img").distinct()
+    data_list_all1 = data_list_all[0:12]
+    data_list_all2 = data_list_all[12:24]
+    data_list_all3 = data_list_all[24:36]
+    data_list_literature = models.book_info.objects.all()
+    data_list_literature1 = data_list_literature[0:12]
+    data_list_literature2 = data_list_literature[12:24]
+    data_list_literature3 = data_list_literature[24:36]
 
-
-
-    name = request.POST.get("user")
-    pwd = request.POST.get("pwd")
-    age = request.POST.get("age")
-    test02.objects.create(name=name,password=pwd,age=age)
-
-
-    return render(request,"user.html",{"datalist":data_list})
+    queryset = {
+        "data_list_all1": data_list_all1,
+        "data_list_all2": data_list_all2,
+        "data_list_all3": data_list_all3,
+        "data_list_literature1":data_list_literature1,
+        "data_list_literature2":data_list_literature2,
+        "data_list_literature3":data_list_literature3,
+    }
+    return render(request,"user.html",queryset)
